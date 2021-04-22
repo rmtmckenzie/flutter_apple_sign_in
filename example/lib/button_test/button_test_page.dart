@@ -1,7 +1,8 @@
 import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:before_after/before_after.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide ButtonStyle;
+
 import 'native_button.dart';
 
 class ButtonTestPage extends StatelessWidget {

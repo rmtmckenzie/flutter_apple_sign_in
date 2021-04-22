@@ -1,8 +1,8 @@
+import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide ButtonStyle;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:apple_sign_in/apple_sign_in.dart';
 
 /// A control you add to your interface that enables users to initiate the Sign In with Apple flow.
 class NativeAppleSignInButton extends StatelessWidget {
@@ -20,11 +20,12 @@ class NativeAppleSignInButton extends StatelessWidget {
   /// A custom corner radius to be used by this button.
   final double cornerRadius;
 
-  const NativeAppleSignInButton(
-      {this.onPressed,
-      this.type = ButtonType.defaultButton,
-      this.style = ButtonStyle.white,
-      this.cornerRadius = 4});
+  const NativeAppleSignInButton({
+    this.onPressed,
+    this.type = ButtonType.defaultButton,
+    this.style = ButtonStyle.white,
+    this.cornerRadius = 4,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +49,7 @@ class NativeAppleSignInButton extends StatelessWidget {
   }
 
   void _createMethodChannel(int nativeViewId) {
-    MethodChannel("dev.gilder.tom/apple_sign_in_button_$nativeViewId")
-      ..setMethodCallHandler(_onMethodCall);
+    MethodChannel("dev.gilder.tom/apple_sign_in_button_$nativeViewId")..setMethodCallHandler(_onMethodCall);
   }
 
   Future<bool> _onMethodCall(MethodCall call) async {
@@ -59,8 +59,7 @@ class NativeAppleSignInButton extends StatelessWidget {
         return null;
     }
 
-    throw MissingPluginException(
-        "AppleSignInButton._onMethodCall: no handler for ${call.method}");
+    throw MissingPluginException("AppleSignInButton._onMethodCall: no handler for ${call.method}");
   }
 
   void _onTapped() {
